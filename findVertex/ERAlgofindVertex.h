@@ -16,6 +16,7 @@
 #define ERTOOL_ERALGOFINDVERTEX_H
 
 #include "ERTool/Base/AlgoBase.h"
+#include "TNtuple.h"
 
 namespace ertool {
 
@@ -51,9 +52,17 @@ namespace ertool {
 		struct part{
 			ertool::NodeID_t nodeID;
 			ertool::RecoType_t recoType;
-			TVector3 start, end;
+			TVector3 start;
 		};
 
+		struct vertex{
+			TVector3 pos;
+			std::vector<part> outList;
+			double R;
+		};
+		
+		int evIndex = 0;
+		TNtuple *nt;
   };
 }
 #endif
