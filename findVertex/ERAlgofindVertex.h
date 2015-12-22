@@ -52,17 +52,16 @@ namespace ertool {
 		struct part{
 			ertool::NodeID_t nodeID;
 			ertool::RecoType_t recoType;
+			int vtx;
 			TVector3 start;
 		};
 
 		struct vertex{
 			TVector3 pos;
 			std::vector<part> outList;
-			double R;
 		};
 		
 		int evIndex = 0;
-		TNtuple *nt;
   };
 }
 #endif

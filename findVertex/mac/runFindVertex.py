@@ -20,13 +20,13 @@ curPath = sys.argv[1];
 #	curPath = curPath + "/" + `x`
 #	my_proc.add_input_file(curPath+"/larlite_mcinfo.root")
 
-for x in xrange(len(sys.argv)-1):
-	my_proc.add_input_file(sys.argv[x+1])
-#for x in xrange(100):
-#	filename=curPath+'/larlite_mcinfo_{}.root'.format(x)
-#	file = ROOT.TFile(filename)
-#	if not file.IsZombie():
-#		my_proc.add_input_file(filename)
+#for x in xrange(len(sys.argv)-1):
+#	my_proc.add_input_file(sys.argv[x+1])
+for x in xrange(100):
+	filename=curPath+'/larlite_mcinfo_{}.root'.format(x)
+	file = ROOT.TFile(filename)
+	if not file.IsZombie():
+		my_proc.add_input_file(filename)
 
 # Specify IO mode
 my_proc.set_io_mode(fmwk.storage_manager.kREAD)
@@ -35,7 +35,8 @@ my_proc.set_io_mode(fmwk.storage_manager.kREAD)
 my_proc.set_ana_output_file("Default.root")
 
 # Create ERTool algorithm (empty base class for this example)
-my_algoempart = ertool.AlgoEMPart()
+my_algoempart  = ertool.AlgoEMPart()
+my_algorecopi0 = ertool.ERAlgorecoPi0()
 
 # Create ERTool analysis (empty base class for this example)
 my_ana = ertool.ERAlgofindVertex()
@@ -49,12 +50,12 @@ my_anaunit = fmwk.ExampleERSelection()
 
 my_anaunit.SetShowerProducer(True,"mcreco");
 my_anaunit.SetTrackProducer(True,"mcreco");
-			
 
 # my_anaunit.SetVtxProducer(True,"generator");
 
 # Implement manager
 my_anaunit._mgr.AddAlgo(my_algoempart)
+my_anaunit._mgr.AddAlgo(my_algorecopi0)
 my_anaunit._mgr.AddAlgo(my_ana)
 my_anaunit._mgr._mc_for_ana = True
 # my_anaunit._mgr.AddAna(my_ana)

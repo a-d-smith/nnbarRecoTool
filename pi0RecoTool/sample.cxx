@@ -1,6 +1,0 @@
-#ifndef NNBARRECOTOOL_PI0RECOTOOL_SAMPLE_CXX
-#define NNBARRECOTOOL_PI0RECOTOOL_SAMPLE_CXX
-
-#include "sample.h"
-
-#endif
